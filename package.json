@@ -1,0 +1,28 @@
+{
+  "name": "react-node-mysql-tutorial",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://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@github.com/Auckfmine/react-node-mysql-tutorial.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Auckfmine/react-node-mysql-tutorial/issues"
+  },
+  "homepage": "https://github.com/Auckfmine/react-node-mysql-tutorial#readme",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.20.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
+}
