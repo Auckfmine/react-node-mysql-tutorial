@@ -6,7 +6,7 @@ exports.sequelize = new Sequelize(
   process.env.MYSQL_USER,
   process.env.MYSQL_ROOT_PASSWORD,
   {
-    host: "localhost",
+    host: "127.0.0.1",
     port: "3307",
     dialect: "mysql",
   }
