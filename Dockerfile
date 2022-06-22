@@ -10,8 +10,8 @@ COPY package*.json ./
 RUN npm install
 # If you are building your code for production
 # RUN npm ci --only=production
-ENV MYSQL_USER="root"
-ENV MYSQL_ALLOW_EMPTY_PASSWORD=yes
+
+
 # Bundle app source
 COPY . .
 
