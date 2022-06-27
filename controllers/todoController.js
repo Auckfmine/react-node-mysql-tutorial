@@ -106,6 +106,7 @@ exports.updateTodoDescription = async function (req, res, next) {
 }
 
 //calculate days between dates
+
 exports.calculateDaysBetweenDates = async function (req, res, next) {
   try {
     const { startDate, endDate } = req.body;
@@ -125,6 +126,8 @@ exports.calculateDaysBetweenDates = async function (req, res, next) {
   }
 }
 //delete todo by id
+
+
 
 exports.updateTodoStatus = async function (req, res, next) {
   try {

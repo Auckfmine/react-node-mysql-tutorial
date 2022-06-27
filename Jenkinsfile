@@ -3,6 +3,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
+                sh 'echo building stage started ! '
                 sh 'node --version'
             }
         }
@@ -37,6 +38,7 @@ pipeline {
     stages {
         stage('pre-deploy') {
             steps {
+                sh echo 'pre-deploy'
                 sh 'node --version'
             }
         }
@@ -53,6 +55,7 @@ pipeline {
     stages {
         stage('post-build') {
             steps {
+                sh 'echo building stage finished ! '
                 sh 'node --version'
             }
         }
