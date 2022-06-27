@@ -21,6 +21,21 @@ app.get("/", function (req, res, next) {
   res.send("hello world");
 });
 
+
+
+
+
+
+//add error handler
+app.use(function (err, req, res, next) {
+  console.log(err);
+  res.status(500).send("Something broke!");
+  next();
+  
+}
+);
+
+
 app.listen(port, function () {
   console.log(`server is listening on ${hostName}:${port}`);
 });

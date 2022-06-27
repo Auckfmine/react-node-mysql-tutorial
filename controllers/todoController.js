@@ -75,6 +75,98 @@ exports.updateTodo = async function (req, res, next) {
     });
   }
 };
+//updateTodo description by id
+exports.updateTodoDescription = async function (req, res, next) {
+  try {
+    const { todoId } = req.params;
+    const { description } = req.body;
+    if (!description) {
+      return res.json({ success: false, error: "body must not be empty" });
+    } else {    
+      const todo = await Todo.findByPk(todoId);
+      if (!todo) {
+        return res.json({
+          success: false,
+          error: "todo with id : " + todoId + " was not found ",
+        });
+      }
+      todo.set("description", description);
+      await todo.save();
+      return res.json({
+        success: true,
+        message: "todo with id : " + todoId + " was updated  successfully ",
+      });
+    }
+  } catch (error) {
+    return res.json({
+      success: false,
+      error: error.message,
+    });
+  }
+}
+
+//calculate days between dates
+exports.calculateDaysBetweenDates = async function (req, res, next) {
+  try {
+    const { startDate, endDate } = req.body;
+
+
+    if (!startDate || !endDate) {
+      return res.json({ success: false, error: "body must not be empty" });
+    } else {
+      const start = new Date(startDate);
+      const end = new Date(endDate);
+      const diffTime = Math.abs(end - start);
+      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+      return res.json({ success: true, days: diffDays });
+    }
+  } catch (error) {
+    return res.json({ success: false, error: error.message });
+  }
+}
+//delete todo by id
+
+exports.updateTodoStatus = async function (req, res, next) {
+  try {
+    const { todoId } = req.params;
+    const { status } = req.body;
+    if (!status) {
+      return res.json({ success: false, error: "body must not be empty" });
+    }
+    const todo = await Todo.findByPk(todoId);
+    if (!todo) {
+      return res.json({
+        success: false,
+        error: "todo with id : " + todoId + " was not found ",
+      });
+    }
+    todo.set("status", status);
+    await todo.save();
+    return res.json({
+      success: true,
+      message: "todo with id : " + todoId + " was updated  successfully ",
+    });
+  } catch (error) {
+    return res.json({
+      success: false,
+      error: error.message,
+    });
+  }
+}
+
+//delete all todos  DELETE /delete-all-todos
+exports.deleteAllTodos = async function (req, res, next) {
+  try {
+    const todos = await Todo.findAll();
+    if (!todos) {
+      return res.json({ success: false, error: "no todos found" });
+    }
+    await Todo.destroy({ where: {} });
+    return res.json({ success: true, message: "all todos deleted" });
+  } catch (error) {
+    return res.json({ success: false, error: error.message });
+  }
+}
 
 //deleteTodo
 exports.deleteTodo = async function (req, res, next) {
